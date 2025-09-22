@@ -9,6 +9,9 @@ International Workshop on Containers and New Orchestration Paradigms for
 Isolated Environments in HPC (CANOPIE-HPC), November, 2025.
 ```
 
+If you find these examples valuable and adapt them for your use in your own
+work, we would appreciate you citing the above paper.
+
 The HPC workflow for deploying vLLM and benchmarking it is located in the
 "hpc-workflow" directory. The steps of the workflow are named in order,
 starting with "0-alloc-compute-node.sh" and ending at "5-run-benchmark.sh".
