@@ -1,0 +1,212 @@
+# -- vLLM Image configuration
+image:
+  # -- Container image name
+  repository: "vllm/vllm-openai"
+
+  # -- Container tag / vLLM version
+  tag: "v0.10.0"
+
+  # -- Container launch command
+  command: ["vllm", "serve", "/data/",
+            "--host", "0.0.0.0", "--port", "8000",
+            "--served-model-name", "RedHatAI/Llama-4-Scout-17B-16E-Instruct-quantized.w4a16",
+            "--tensor-parallel-size=2",
+            "--disable-log-requests",
+            "--max-model-len=16384",
+            "--api-key", "{{ .Values.apiKey }}"
+           ]
+
+  # -- Environment variables
+  env:
+    # NOTE: This is setup to run offline and to disable tracking.
+    #       The goal is to operate completely disconnected from the internet.
+    - name: HOME
+      value: "/data"
+    - name: HF_HOME
+      value: "/data"
+    - name: HF_HUB_DISABLE_TELEMETRY
+      value: "1"
+    - name: VLLM_NO_USAGE_STATS
+      value: "1"
+    - name: DO_NOT_TRACK
+      value: "1"
+    - name: HF_DATASETS_OFFLINE
+      value: "1"
+    - name: TRANSFORMERS_OFFLINE
+      value: "1"
+    - name: HF_HUB_OFFLINE
+      value: "1"
+    - name: OMP_NUM_THREADS
+      value: "8"
+
+  # NOTE: OpenShift does not allow running as "root" inside the container.
+  securityContext:
+    runAsNonRoot: true
+
+# -- Container port
+containerPort: 8000
+
+# -- Service name
+serviceName: null
+
+# -- Service port
+servicePort: 80
+
+# -- Additional ports configuration
+extraPorts: []
+
+# -- Number of replicas
+replicaCount: 1
+
+# -- Deployment strategy configuration
+deploymentStrategy: {}
+
+# -- Resource configuration
+resources:
+  requests:
+    # -- Number of CPUs
+    cpu: 16
+    # -- CPU memory configuration
+    memory: 32Gi
+    # -- Number of gpus used
+    nvidia.com/gpu: 2
+  limits:
+    # -- Number of CPUs
+    cpu: 16
+    # -- CPU memory configuration
+    memory: 32Gi
+    # -- Number of gpus used
+    nvidia.com/gpu: 2
+
+# -- Type of gpu used
+gpuModels:
+  - "NVIDIA-H100-NVL"  # 94 GB HBM3
+#  - "NVIDIA-H100-PCIe" # 80 GB HBM2e
+
+# -- runtimeClassName to use
+# NOTE: Setting runtimeClassName on OpenShift results in an error.
+#runtimeClassName: nvidia
+
+# -- Autoscaling configuration
+autoscaling:
+  # -- Enable autoscaling
+  enabled: false
+  # -- Minimum replicas
+  minReplicas: 1
+  # -- Maximum replicas
+  maxReplicas: 100
+  # -- Target CPU utilization for autoscaling
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# -- Configmap
+configs: {}
+
+# -- Secrets configuration
+secrets:
+  # Leave s3accesskeyid unset ("") to pull from public s3 bucket
+  s3accesskeyid: ""
+  s3accesskey: ""
+  s3endpoint: "https://local.s3.endpoint"
+  s3bucketname: "huggingface.co"
+
+# -- External configuration
+externalConfigs: []
+
+# -- Custom Objects configuration
+customObjects: []
+
+# -- Disruption Budget Configuration
+maxUnavailablePodDisruptionBudget: ""
+
+# -- Additional configuration for the init container
+extraInit:
+  # -- Image to use for the init container
+  image: amazon/aws-cli:latest
+  # -- Path of the model on the s3 which hosts model weights and config files
+  s3modelpath: "RedHatAI/Llama-4-Scout-17B-16E-Instruct-quantized.w4a16"
+  awsEc2MetadataDisabled: true
+
+
+# -- Persistent storage configuration
+persistence:
+  # -- Enable persistent storage
+  enabled: true
+
+  # -- Persistent storage size to allocate for /data volume
+  size: 200Gi
+
+  # -- Persistent storage access mode
+  accessMode: ReadWriteMany
+
+  # -- Persistent storage class name (optional)
+  storageClassName: null
+
+  # -- Persistent storage annotations
+  annotations:
+    helm.sh/resource-policy: "keep"
+
+# -- Extra volumes mounts to include in the main vLLM container
+#extraVolumeMounts:
+#  - name: ssl-certs
+#    mountPath: /ssl-certs
+#    subPath: ssl-certs
+
+# -- Extra volumes to include in the vLLM deployment
+#extraVolumes:
+#  - name: ssl-certs
+#    configMap:
+#      name: ssl-certs
+
+# -- Additional containers configuration
+extraContainers: []
+
+# -- Readiness probe configuration
+readinessProbe:
+  # -- Number of seconds after the container has started before readiness probe is initiated
+  initialDelaySeconds: 120
+  # -- How often (in seconds) to perform the readiness probe
+  periodSeconds: 60
+  # -- Number of times after which if a probe fails in a row, Kubernetes considers that the overall check has failed: the container is not ready
+  failureThreshold: 3
+   # -- Configuration of the Kubelet http request on the server
+  httpGet:
+    # -- Path to access on the HTTP server
+    path: /health
+    # -- Name or number of the port to access on the container, on which the server is listening
+    port: 8000
+
+# -- Liveness probe configuration
+livenessProbe:
+ # -- Number of seconds after the container has started before liveness probe is initiated
+  initialDelaySeconds: 600
+  # -- Number of times after which if a probe fails in a row, Kubernetes considers that the overall check has failed: the container is not alive
+  failureThreshold: 3
+  # -- How often (in seconds) to perform the liveness probe
+  periodSeconds: 60
+  # -- Configuration of the Kubelet http request on the server
+  httpGet:
+    # -- Path to access on the HTTP server
+    path: /health
+    # -- Name or number of the port to access on the container, on which the server is listening
+    port: 8000
+
+# -- Ingress configuration
+ingress:
+  # -- Enable ingress
+  enabled: true
+  # -- Ingress annotations
+  annotations:
+    route.openshift.io/termination: "edge"
+    haproxy.router.openshift.io/timeout: 600s
+    haproxy.router.openshift.io/rewrite-target: /
+  # -- Ingress path
+  path: /
+  # -- Ingress path type
+  pathType: Prefix
+  # -- Ingress hostname
+  host: vllm-bench.openshift.server.location.com
+
+labels:
+  environment: "test"
+  release: "test"
