@@ -1,0 +1,12 @@
+$ ./4-download-benchmark-datasets.sh 
+### Downloading ShareGPT dataset, Start Time: Mon Sep 22 11:13:24 MDT 2025
+--2025-09-22 11:13:24--  https://huggingface.co/datasets/anon8231489123/ShareGPT_Vicuna_unfiltered/resolve/main/ShareGPT_V3_unfiltered_cleaned_split.json
+[...]
+Length: 672837942 (642M) [application/json]
+Saving to: ‘ShareGPT_V3_unfiltered_cleaned_split.json’
+
+ShareGPT_V3_unfiltered_cleaned_split.json      100%[=================================================================================================>] 641.67M  91.1MB/s    in 10s     
+
+2025-09-22 11:13:35 (62.9 MB/s) - ‘ShareGPT_V3_unfiltered_cleaned_split.json’ saved [672837942/672837942]
+
+### Done, End Time: Mon Sep 22 11:13:35 MDT 2025

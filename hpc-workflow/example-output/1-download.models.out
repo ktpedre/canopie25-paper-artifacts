@@ -1,0 +1,22 @@
+$ ./1-download-models.sh
+### Hostname: hops
+### Container Image: alpine/git:latest
+### Pulling Container Image, Start Time: Mon Sep 22 06:58:18 MDT 2025
+2814a24c356efa87d2bb30f7b84e48dd836e2dd233859a2493ba05d97a2e79c4
+### Done, End Time: Mon Sep 22 06:58:25 MDT 2025
+### Downloading meta-llama/Llama-4-Scout-17B-16E-Instruct to ./models/meta-llama/Llama-4-Scout-17B-16E-Instruct
+### Doing Git Clone, Start Time: Mon Sep 22 06:58:25 MDT 2025
+Cloning into 'Llama-4-Scout-17B-16E-Instruct'...
+Filtering content: 100% (52/52), 14.39 GiB | 28.19 MiB/s, done.
+### Done, End Time: Mon Sep 22 07:07:09 MDT 2025
+### Downloading RedHatAI/Llama-4-Scout-17B-16E-Instruct-quantized.w4a16 to ./models/RedHatAI/Llama-4-Scout-17B-16E-Instruct-quantized.w4a16
+### Doing Git Clone, Start Time: Mon Sep 22 07:07:09 MDT 2025
+Cloning into 'Llama-4-Scout-17B-16E-Instruct-quantized.w4a16'...
+Filtering content: 100% (16/16), 12.44 GiB | 64.53 MiB/s, done.
+### Done, End Time: Mon Sep 22 07:10:28 MDT 2025
+### Downloading meta-llama/Llama-3.1-405B-Instruct to ./models/meta-llama/Llama-3.1-405B-Instruct
+### Doing Git Clone, Start Time: Mon Sep 22 07:10:28 MDT 2025
+Cloning into 'Llama-3.1-405B-Instruct'...
+Filtering content: 100% (545/545), 459.94 GiB | 68.11 MiB/s, done.
+### Done, End Time: Mon Sep 22 09:05:46 MDT 2025
+

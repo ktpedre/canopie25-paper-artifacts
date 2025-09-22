@@ -1,0 +1,432 @@
+$ ./5-run-benchmark.sh
+### Hostname: hopsB
+### Running batch size 1, server_node=hopsA, Start Time: Mon Sep 22 11:50:40 MDT 2025
+Trying to pull docker.io/rocm/vllm:rocm6.4.1_vllm_0.9.1_20250702...
+Getting image source signatures
+Copying blob 215ed5a63843 done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 215ed5a63843 done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 215ed5a63843 done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 215ed5a63843 done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 215ed5a63843 done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob 215ed5a63843 done   |
+Copying blob 4f4fb700ef54 done   |
+Copying blob b527d63c6f9a done   |
+Copying blob d9ef619ff835 done   |
+Copying blob eaf29c7ab64b done   |
+Copying blob 8ac9361c846b done   |
+Copying blob 66dfd845ef4e done   |
+Copying blob f181ab4f89e2 done   |
+Copying blob d5cb25b1f20b done   |
+Copying blob a8100eccf42f done   |
+Copying blob ce21c0702269 done   |
+Copying blob bfddd566e94c done   |
+Copying blob 0ec7e013f973 done   |
+Copying blob b5e9fb8f3953 done   |
+Copying blob b94acb288765 done   |
+Copying blob a329f2852efa done   |                                                                                                                                                       Copying blob 485ceed72559 done   |
+Copying blob 4f4fb700ef54 skipped: already exists                                                                                                                                        Copying blob 4f4fb700ef54 skipped: already exists
+Copying blob 651c9417e2e7 done   |                                                                                                                                                       Copying blob 4f4fb700ef54 skipped: already exists
+Copying blob 92939d15d125 done   |                                                                                                                                                       Copying blob be622dd7056f done   |
+Copying blob a81f6af7ff88 done   |                                                                                                                                                       Copying blob 4dcabe6fc30e done   |
+Copying config aaf2f91a12 done   |
+Writing manifest to image destination
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+INFO 09-22 17:56:15 [__init__.py:248] No platform detected, vLLM is running on UnspecifiedPlatform
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+Namespace(backend='openai-chat', base_url='http://hopsA:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', dataset_name='sharegpt', dataset_path='./datasets/ShareGPT_V3_unfiltered_cleaned_split.json', max_concurrency=1, model='meta-llama/Llama-4-Scout-17B-16E-Instruct', tokenizer=None, use_beam_search=False, num_prompts=1000, logprobs=None, request_rate=inf, burstiness=1.0, seed=12345, trust_remote_code=False, disable_tqdm=False, profile=False, save_result=False, save_detailed=False, append_result=False, metadata=None, result_dir=None, result_filename=None, ignore_eos=False, percentile_metrics='ttft,tpot,itl', metric_percentiles='99', goodput=None, custom_output_len=256, custom_skip_chat_template=False, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=128, random_range_ratio=0.0, random_prefix_len=0, hf_subset=None, hf_split=None, hf_output_len=None, top_p=None, top_k=None, min_p=None, temperature=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None)
+Starting initial single prompt test run...
+Initial test run completed. Starting main benchmark run...
+Traffic request rate: inf
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 1
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [28:34<00:00,  1.71s/it]
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  1714.62
+Total input tokens:                      230398
+Total generated tokens:                  182289
+Request throughput (req/s):              0.58
+Output token throughput (tok/s):         106.31
+Total Token throughput (tok/s):          240.69
+---------------Time to First Token----------------
+Mean TTFT (ms):                          37.81
+Median TTFT (ms):                        35.15
+P99 TTFT (ms):                           65.82
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          9.24
+Median TPOT (ms):                        9.24
+P99 TPOT (ms):                           9.44
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           9.20
+Median ITL (ms):                         9.20
+P99 ITL (ms):                            10.26
+==================================================
+### Done, End Time: Mon Sep 22 12:25:02 MDT 2025
+###
+### Running batch size 2, server_node=hopsA, Start Time: Mon Sep 22 12:25:02 MDT 2025
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+INFO 09-22 18:25:05 [__init__.py:248] No platform detected, vLLM is running on UnspecifiedPlatform
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+Namespace(backend='openai-chat', base_url='http://hopsA:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', dataset_name='sharegpt', dataset_path='./datasets/ShareGPT_V3_unfiltered_cleaned_split.json', max_concurrency=2, model='meta-llama/Llama-4-Scout-17B-16E-Instruct', tokenizer=None, use_beam_search=False, num_prompts=1000, logprobs=None, request_rate=inf, burstiness=1.0, seed=12345, trust_remote_code=False, disable_tqdm=False, profile=False, save_result=False, save_detailed=False, append_result=False, metadata=None, result_dir=None, result_filename=None, ignore_eos=False, percentile_metrics='ttft,tpot,itl', metric_percentiles='99', goodput=None, custom_output_len=256, custom_skip_chat_template=False, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=128, random_range_ratio=0.0, random_prefix_len=0, hf_subset=None, hf_split=None, hf_output_len=None, top_p=None, top_k=None, min_p=None, temperature=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None)
+Starting initial single prompt test run...
+Initial test run completed. Starting main benchmark run...
+Traffic request rate: inf
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 2
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [15:25<00:00,  1.08it/s]
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  925.17
+Total input tokens:                      230398
+Total generated tokens:                  182125
+Request throughput (req/s):              1.08
+Output token throughput (tok/s):         196.86
+Total Token throughput (tok/s):          445.89
+---------------Time to First Token----------------
+Mean TTFT (ms):                          39.25
+Median TTFT (ms):                        36.75
+P99 TTFT (ms):                           66.92
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          9.98
+Median TPOT (ms):                        9.92
+P99 TPOT (ms):                           11.46
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           9.93
+Median ITL (ms):                         9.86
+P99 ITL (ms):                            11.73
+==================================================
+### Done, End Time: Mon Sep 22 12:40:40 MDT 2025
+###
+### Running batch size 4, server_node=hopsA, Start Time: Mon Sep 22 12:40:40 MDT 2025
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+INFO 09-22 18:40:43 [__init__.py:248] No platform detected, vLLM is running on UnspecifiedPlatform
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+Namespace(backend='openai-chat', base_url='http://hopsA:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', dataset_name='sharegpt', dataset_path='./datasets/ShareGPT_V3_unfiltered_cleaned_split.json', max_concurrency=4, model='meta-llama/Llama-4-Scout-17B-16E-Instruct', tokenizer=None, use_beam_search=False, num_prompts=1000, logprobs=None, request_rate=inf, burstiness=1.0, seed=12345, trust_remote_code=False, disable_tqdm=False, profile=False, save_result=False, save_detailed=False, append_result=False, metadata=None, result_dir=None, result_filename=None, ignore_eos=False, percentile_metrics='ttft,tpot,itl', metric_percentiles='99', goodput=None, custom_output_len=256, custom_skip_chat_template=False, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=128, random_range_ratio=0.0, random_prefix_len=0, hf_subset=None, hf_split=None, hf_output_len=None, top_p=None, top_k=None, min_p=None, temperature=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None)
+Starting initial single prompt test run...
+Initial test run completed. Starting main benchmark run...
+Traffic request rate: inf
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 4
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [08:49<00:00,  1.89it/s]
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  529.17
+Total input tokens:                      230398
+Total generated tokens:                  182420
+Request throughput (req/s):              1.89
+Output token throughput (tok/s):         344.73
+Total Token throughput (tok/s):          780.12
+---------------Time to First Token----------------
+Mean TTFT (ms):                          42.05
+Median TTFT (ms):                        39.60
+P99 TTFT (ms):                           70.55
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          11.43
+Median TPOT (ms):                        11.29
+P99 TPOT (ms):                           13.99
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           11.34
+Median ITL (ms):                         11.09
+P99 ITL (ms):                            23.68
+==================================================
+### Done, End Time: Mon Sep 22 12:49:42 MDT 2025
+###
+### Running batch size 8, server_node=hopsA, Start Time: Mon Sep 22 12:49:42 MDT 2025
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+INFO 09-22 18:49:45 [__init__.py:248] No platform detected, vLLM is running on UnspecifiedPlatform
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+Namespace(backend='openai-chat', base_url='http://hopsA:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', dataset_name='sharegpt', dataset_path='./datasets/ShareGPT_V3_unfiltered_cleaned_split.json', max_concurrency=8, model='meta-llama/Llama-4-Scout-17B-16E-Instruct', tokenizer=None, use_beam_search=False, num_prompts=1000, logprobs=None, request_rate=inf, burstiness=1.0, seed=12345, trust_remote_code=False, disable_tqdm=False, profile=False, save_result=False, save_detailed=False, append_result=False, metadata=None, result_dir=None, result_filename=None, ignore_eos=False, percentile_metrics='ttft,tpot,itl', metric_percentiles='99', goodput=None, custom_output_len=256, custom_skip_chat_template=False, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=128, random_range_ratio=0.0, random_prefix_len=0, hf_subset=None, hf_split=None, hf_output_len=None, top_p=None, top_k=None, min_p=None, temperature=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None)
+Starting initial single prompt test run...
+Initial test run completed. Starting main benchmark run...
+Traffic request rate: inf
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 8
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [05:25<00:00,  3.07it/s]
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  325.98
+Total input tokens:                      230398
+Total generated tokens:                  182084
+Request throughput (req/s):              3.07
+Output token throughput (tok/s):         558.58
+Total Token throughput (tok/s):          1265.38
+---------------Time to First Token----------------
+Mean TTFT (ms):                          46.59
+Median TTFT (ms):                        43.06
+P99 TTFT (ms):                           93.91
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          14.00
+Median TPOT (ms):                        13.88
+P99 TPOT (ms):                           17.46
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           13.88
+Median ITL (ms):                         13.30
+P99 ITL (ms):                            37.70
+==================================================
+### Done, End Time: Mon Sep 22 12:55:21 MDT 2025
+###
+### Running batch size 16, server_node=hopsA, Start Time: Mon Sep 22 12:55:21 MDT 2025
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+INFO 09-22 18:55:24 [__init__.py:248] No platform detected, vLLM is running on UnspecifiedPlatform
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+Namespace(backend='openai-chat', base_url='http://hopsA:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', dataset_name='sharegpt', dataset_path='./datasets/ShareGPT_V3_unfiltered_cleaned_split.json', max_concurrency=16, model='meta-llama/Llama-4-Scout-17B-16E-Instruct', tokenizer=None, use_beam_search=False, num_prompts=1000, logprobs=None, request_rate=inf, burstiness=1.0, seed=12345, trust_remote_code=False, disable_tqdm=False, profile=False, save_result=False, save_detailed=False, append_result=False, metadata=None, result_dir=None, result_filename=None, ignore_eos=False, percentile_metrics='ttft,tpot,itl', metric_percentiles='99', goodput=None, custom_output_len=256, custom_skip_chat_template=False, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=128, random_range_ratio=0.0, random_prefix_len=0, hf_subset=None, hf_split=None, hf_output_len=None, top_p=None, top_k=None, min_p=None, temperature=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None)
+Starting initial single prompt test run...
+Initial test run completed. Starting main benchmark run...
+Traffic request rate: inf
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 16
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [03:32<00:00,  4.71it/s]
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  212.17
+Total input tokens:                      230398
+Total generated tokens:                  181989
+Request throughput (req/s):              4.71
+Output token throughput (tok/s):         857.74
+Total Token throughput (tok/s):          1943.64
+---------------Time to First Token----------------
+Mean TTFT (ms):                          54.69
+Median TTFT (ms):                        49.88
+P99 TTFT (ms):                           253.21
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          18.00
+Median TPOT (ms):                        17.90
+P99 TPOT (ms):                           23.09
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           17.82
+Median ITL (ms):                         16.70
+P99 ITL (ms):                            47.03
+==================================================
+### Done, End Time: Mon Sep 22 12:59:06 MDT 2025
+###
+### Running batch size 32, server_node=hopsA, Start Time: Mon Sep 22 12:59:06 MDT 2025
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+INFO 09-22 18:59:09 [__init__.py:248] No platform detected, vLLM is running on UnspecifiedPlatform
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+Namespace(backend='openai-chat', base_url='http://hopsA:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', dataset_name='sharegpt', dataset_path='./datasets/ShareGPT_V3_unfiltered_cleaned_split.json', max_concurrency=32, model='meta-llama/Llama-4-Scout-17B-16E-Instruct', tokenizer=None, use_beam_search=False, num_prompts=1000, logprobs=None, request_rate=inf, burstiness=1.0, seed=12345, trust_remote_code=False, disable_tqdm=False, profile=False, save_result=False, save_detailed=False, append_result=False, metadata=None, result_dir=None, result_filename=None, ignore_eos=False, percentile_metrics='ttft,tpot,itl', metric_percentiles='99', goodput=None, custom_output_len=256, custom_skip_chat_template=False, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=128, random_range_ratio=0.0, random_prefix_len=0, hf_subset=None, hf_split=None, hf_output_len=None, top_p=None, top_k=None, min_p=None, temperature=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None)
+Starting initial single prompt test run...
+Initial test run completed. Starting main benchmark run...
+Traffic request rate: inf
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 32
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [02:31<00:00,  6.59it/s]
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  151.70
+Total input tokens:                      230398
+Total generated tokens:                  181799
+Request throughput (req/s):              6.59
+Output token throughput (tok/s):         1198.39
+Total Token throughput (tok/s):          2717.13
+---------------Time to First Token----------------
+Mean TTFT (ms):                          72.92
+Median TTFT (ms):                        59.50
+P99 TTFT (ms):                           444.56
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          25.21
+Median TPOT (ms):                        25.23
+P99 TPOT (ms):                           29.72
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           24.92
+Median ITL (ms):                         23.42
+P99 ITL (ms):                            51.37
+==================================================
+### Done, End Time: Mon Sep 22 13:01:51 MDT 2025
+###
+### Running batch size 64, server_node=hopsA, Start Time: Mon Sep 22 13:01:51 MDT 2025
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+INFO 09-22 19:01:54 [__init__.py:248] No platform detected, vLLM is running on UnspecifiedPlatform
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+Namespace(backend='openai-chat', base_url='http://hopsA:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', dataset_name='sharegpt', dataset_path='./datasets/ShareGPT_V3_unfiltered_cleaned_split.json', max_concurrency=64, model='meta-llama/Llama-4-Scout-17B-16E-Instruct', tokenizer=None, use_beam_search=False, num_prompts=1000, logprobs=None, request_rate=inf, burstiness=1.0, seed=12345, trust_remote_code=False, disable_tqdm=False, profile=False, save_result=False, save_detailed=False, append_result=False, metadata=None, result_dir=None, result_filename=None, ignore_eos=False, percentile_metrics='ttft,tpot,itl', metric_percentiles='99', goodput=None, custom_output_len=256, custom_skip_chat_template=False, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=128, random_range_ratio=0.0, random_prefix_len=0, hf_subset=None, hf_split=None, hf_output_len=None, top_p=None, top_k=None, min_p=None, temperature=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None)
+Starting initial single prompt test run...
+Initial test run completed. Starting main benchmark run...
+Traffic request rate: inf
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 64
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [01:39<00:00, 10.10it/s]
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  99.03
+Total input tokens:                      230398
+Total generated tokens:                  181738
+Request throughput (req/s):              10.10
+Output token throughput (tok/s):         1835.17
+Total Token throughput (tok/s):          4161.70
+---------------Time to First Token----------------
+Mean TTFT (ms):                          112.88
+Median TTFT (ms):                        69.59
+P99 TTFT (ms):                           892.85
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          31.80
+Median TPOT (ms):                        31.64
+P99 TPOT (ms):                           43.26
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           31.00
+Median ITL (ms):                         28.72
+P99 ITL (ms):                            59.59
+==================================================
+### Done, End Time: Mon Sep 22 13:03:43 MDT 2025
+###
+### Running batch size 128, server_node=hopsA, Start Time: Mon Sep 22 13:03:43 MDT 2025
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+INFO 09-22 19:03:46 [__init__.py:248] No platform detected, vLLM is running on UnspecifiedPlatform
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+Namespace(backend='openai-chat', base_url='http://hopsA:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', dataset_name='sharegpt', dataset_path='./datasets/ShareGPT_V3_unfiltered_cleaned_split.json', max_concurrency=128, model='meta-llama/Llama-4-Scout-17B-16E-Instruct', tokenizer=None, use_beam_search=False, num_prompts=1000, logprobs=None, request_rate=inf, burstiness=1.0, seed=12345, trust_remote_code=False, disable_tqdm=False, profile=False, save_result=False, save_detailed=False, append_result=False, metadata=None, result_dir=None, result_filename=None, ignore_eos=False, percentile_metrics='ttft,tpot,itl', metric_percentiles='99', goodput=None, custom_output_len=256, custom_skip_chat_template=False, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=128, random_range_ratio=0.0, random_prefix_len=0, hf_subset=None, hf_split=None, hf_output_len=None, top_p=None, top_k=None, min_p=None, temperature=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None)
+Starting initial single prompt test run...
+Initial test run completed. Starting main benchmark run...
+Traffic request rate: inf
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 128
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [01:06<00:00, 15.02it/s]
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  66.59
+Total input tokens:                      230398
+Total generated tokens:                  182266
+Request throughput (req/s):              15.02
+Output token throughput (tok/s):         2737.11
+Total Token throughput (tok/s):          6197.03
+---------------Time to First Token----------------
+Mean TTFT (ms):                          238.77
+Median TTFT (ms):                        88.28
+P99 TTFT (ms):                           1646.22
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          40.84
+Median TPOT (ms):                        39.01
+P99 TPOT (ms):                           87.95
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           37.75
+Median ITL (ms):                         33.86
+P99 ITL (ms):                            70.32
+==================================================
+### Done, End Time: Mon Sep 22 13:05:02 MDT 2025
+###
+### Running batch size 256, server_node=hopsA, Start Time: Mon Sep 22 13:05:02 MDT 2025
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+INFO 09-22 19:05:05 [__init__.py:248] No platform detected, vLLM is running on UnspecifiedPlatform
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+Namespace(backend='openai-chat', base_url='http://hopsA:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', dataset_name='sharegpt', dataset_path='./datasets/ShareGPT_V3_unfiltered_cleaned_split.json', max_concurrency=256, model='meta-llama/Llama-4-Scout-17B-16E-Instruct', tokenizer=None, use_beam_search=False, num_prompts=1000, logprobs=None, request_rate=inf, burstiness=1.0, seed=12345, trust_remote_code=False, disable_tqdm=False, profile=False, save_result=False, save_detailed=False, append_result=False, metadata=None, result_dir=None, result_filename=None, ignore_eos=False, percentile_metrics='ttft,tpot,itl', metric_percentiles='99', goodput=None, custom_output_len=256, custom_skip_chat_template=False, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=128, random_range_ratio=0.0, random_prefix_len=0, hf_subset=None, hf_split=None, hf_output_len=None, top_p=None, top_k=None, min_p=None, temperature=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None)
+Starting initial single prompt test run...
+Initial test run completed. Starting main benchmark run...
+Traffic request rate: inf
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 256
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:49<00:00, 20.01it/s]
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  49.98
+Total input tokens:                      230398
+Total generated tokens:                  181938
+Request throughput (req/s):              20.01
+Output token throughput (tok/s):         3639.97
+Total Token throughput (tok/s):          8249.46
+---------------Time to First Token----------------
+Mean TTFT (ms):                          676.13
+Median TTFT (ms):                        121.84
+P99 TTFT (ms):                           2996.99
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          56.96
+Median TPOT (ms):                        52.30
+P99 TPOT (ms):                           162.29
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           48.18
+Median ITL (ms):                         41.46
+P99 ITL (ms):                            98.28
+==================================================
+### Done, End Time: Mon Sep 22 13:06:05 MDT 2025
+###
+### Running batch size 512, server_node=hopsA, Start Time: Mon Sep 22 13:06:05 MDT 2025
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+INFO 09-22 19:06:08 [__init__.py:248] No platform detected, vLLM is running on UnspecifiedPlatform
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+Namespace(backend='openai-chat', base_url='http://hopsA:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', dataset_name='sharegpt', dataset_path='./datasets/ShareGPT_V3_unfiltered_cleaned_split.json', max_concurrency=512, model='meta-llama/Llama-4-Scout-17B-16E-Instruct', tokenizer=None, use_beam_search=False, num_prompts=1000, logprobs=None, request_rate=inf, burstiness=1.0, seed=12345, trust_remote_code=False, disable_tqdm=False, profile=False, save_result=False, save_detailed=False, append_result=False, metadata=None, result_dir=None, result_filename=None, ignore_eos=False, percentile_metrics='ttft,tpot,itl', metric_percentiles='99', goodput=None, custom_output_len=256, custom_skip_chat_template=False, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=128, random_range_ratio=0.0, random_prefix_len=0, hf_subset=None, hf_split=None, hf_output_len=None, top_p=None, top_k=None, min_p=None, temperature=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None)
+Starting initial single prompt test run...
+Initial test run completed. Starting main benchmark run...
+Traffic request rate: inf
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 512
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:43<00:00, 23.10it/s]
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  43.29
+Total input tokens:                      230398
+Total generated tokens:                  182237
+Request throughput (req/s):              23.10
+Output token throughput (tok/s):         4209.80
+Total Token throughput (tok/s):          9532.15
+---------------Time to First Token----------------
+Mean TTFT (ms):                          2310.85
+Median TTFT (ms):                        2636.45
+P99 TTFT (ms):                           6052.26
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          91.68
+Median TPOT (ms):                        76.49
+P99 TPOT (ms):                           267.30
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           63.08
+Median ITL (ms):                         50.59
+P99 ITL (ms):                            275.09
+==================================================
+### Done, End Time: Mon Sep 22 13:07:02 MDT 2025
+###
+### Running batch size 1024, server_node=hopsA, Start Time: Mon Sep 22 13:07:02 MDT 2025
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+INFO 09-22 19:07:05 [__init__.py:248] No platform detected, vLLM is running on UnspecifiedPlatform
+/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:776: UserWarning: Can't initialize amdsmi - Error code: 34
+  warnings.warn(f"Can't initialize amdsmi - Error code: {e.err_code}")
+Namespace(backend='openai-chat', base_url='http://hopsA:8000', host='127.0.0.1', port=8000, endpoint='/v1/chat/completions', dataset_name='sharegpt', dataset_path='./datasets/ShareGPT_V3_unfiltered_cleaned_split.json', max_concurrency=1024, model='meta-llama/Llama-4-Scout-17B-16E-Instruct', tokenizer=None, use_beam_search=False, num_prompts=1000, logprobs=None, request_rate=inf, burstiness=1.0, seed=12345, trust_remote_code=False, disable_tqdm=False, profile=False, save_result=False, save_detailed=False, append_result=False, metadata=None, result_dir=None, result_filename=None, ignore_eos=False, percentile_metrics='ttft,tpot,itl', metric_percentiles='99', goodput=None, custom_output_len=256, custom_skip_chat_template=False, sonnet_input_len=550, sonnet_output_len=150, sonnet_prefix_len=200, sharegpt_output_len=None, random_input_len=1024, random_output_len=128, random_range_ratio=0.0, random_prefix_len=0, hf_subset=None, hf_split=None, hf_output_len=None, top_p=None, top_k=None, min_p=None, temperature=None, tokenizer_mode='auto', served_model_name=None, lora_modules=None)
+Starting initial single prompt test run...
+Initial test run completed. Starting main benchmark run...
+Traffic request rate: inf
+Burstiness factor: 1.0 (Poisson process)
+Maximum request concurrency: 1024
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1000/1000 [00:41<00:00, 23.89it/s]
+============ Serving Benchmark Result ============
+Successful requests:                     1000
+Benchmark duration (s):                  41.86
+Total input tokens:                      230398
+Total generated tokens:                  182350
+Request throughput (req/s):              23.89
+Output token throughput (tok/s):         4355.88
+Total Token throughput (tok/s):          9859.51
+---------------Time to First Token----------------
+Mean TTFT (ms):                          7881.55
+Median TTFT (ms):                        7641.16
+P99 TTFT (ms):                           11767.17
+-----Time per Output Token (excl. 1st token)------
+Mean TPOT (ms):                          127.23
+Median TPOT (ms):                        82.13
+P99 TPOT (ms):                           320.78
+---------------Inter-token Latency----------------
+Mean ITL (ms):                           65.50
+Median ITL (ms):                         51.23
+P99 ITL (ms):                            292.61
+==================================================
+### Done, End Time: Mon Sep 22 13:07:57 MDT 2025
+###
