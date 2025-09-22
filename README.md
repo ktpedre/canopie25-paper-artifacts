@@ -3,7 +3,10 @@
 This repo contains example run scripts and gnuplot files needed to reproduce results in the following paper:
 
 ```
-Angel M. Beltre, Jeff Ogden, and Kevin Pedretti. Experience Deploying Containerized GenAI Services at an HPC Center. In Proceedings of the 7th International Workshop on Containers and New Orchestration Paradigms for Isolated Environments in HPC (CANOPIE-HPC), November, 2025.
+Angel M. Beltre, Jeff Ogden, and Kevin Pedretti. Experience Deploying
+Containerized GenAI Services at an HPC Center. In Proceedings of the 7th
+International Workshop on Containers and New Orchestration Paradigms for
+Isolated Environments in HPC (CANOPIE-HPC), November, 2025.
 ```
 
 The HPC workflow for deploying vLLM and benchmarking it is located in the "hpc-workflow" directory.
