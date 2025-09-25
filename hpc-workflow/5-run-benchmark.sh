@@ -83,7 +83,7 @@ for batch_size in "${batch_sizes[@]}"; do
             --env "VLLM_V1_USE_PREFILL_DECODE_ATTENTION=1" \
             --entrypoint="/bin/bash" \
             --env "no_proxy=${no_proxy},${SERVER_NODE}" \
-            vllm:rocm6.4.1_vllm_0.9.1_20250702 \
+            rocm/vllm:rocm6.4.1_vllm_0.9.1_20250702 \
                 -c "python3 /app/vllm/benchmarks/benchmark_serving.py --backend openai-chat --endpoint /v1/chat/completions --base-url http://${SERVER_NODE}:8000 --dataset-name=sharegpt --dataset-path=./datasets/ShareGPT_V3_unfiltered_cleaned_split.json --model meta-llama/Llama-4-Scout-17B-16E-Instruct --seed=12345 --max-concurrency ${batch_size}"
 
     else
