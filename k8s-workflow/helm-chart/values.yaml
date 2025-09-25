@@ -4,7 +4,7 @@ image:
   repository: "vllm/vllm-openai"
 
   # -- Container tag / vLLM version
-  tag: "v0.10.0"
+  tag: "v0.9.1"
 
   # -- Container launch command
   command: ["vllm", "serve", "/data/",
