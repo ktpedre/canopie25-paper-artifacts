@@ -3,10 +3,14 @@
 This repo contains example run scripts and gnuplot files needed to reproduce results in the following paper:
 
 ```
-Angel M. Beltre, Jeff Ogden, and Kevin Pedretti. Experience Deploying
-Containerized GenAI Services at an HPC Center. In Proceedings of the 7th
-International Workshop on Containers and New Orchestration Paradigms for
-Isolated Environments in HPC (CANOPIE-HPC), November, 2025.
+@inproceedings{beltre2025,
+  author    = {Angel M. Beltre and Jeff Ogden and Kevin Pedretti},
+  title     = {{Experience Deploying Containerized GenAI Services at an HPC Center}},
+  booktitle = {7th International Workshop on Containers and New Orchestration Paradigms for Isolated Environments in HPC (CANOPIE), held in conjunction with SC25},
+  month     = {November},
+  year      = {2025},
+  doi       = {10.1145/3731599.3767356}
+}
 ```
 
 If you find these examples valuable and adapt them for your use in your own
