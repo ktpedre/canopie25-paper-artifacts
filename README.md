@@ -19,6 +19,8 @@ work, we would appreciate you citing the above paper.
 The HPC workflow for deploying vLLM and benchmarking it is located in the
 "hpc-workflow" directory. The steps of the workflow are named in order,
 starting with "0-alloc-compute-node.sh" and ending at "5-run-benchmark.sh".
+Example output for each step is provided in the hpc-workflow/example-output
+directory.
 
 The Kubernetes / OpenShift workflow for deploying vLLM is located in the
 "k8s-workflow" directory.  Note that the Helm Chart in the
